@@ -31,5 +31,5 @@ jobs:
         run: ls
 
       - name: Run app.js
-        run: npm app.js
+        run: npm run start
         shell: bash
