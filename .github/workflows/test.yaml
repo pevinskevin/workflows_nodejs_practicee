@@ -1,0 +1,19 @@
+name: workflow CI
+
+on:
+  push:
+    branches:
+      - workflow_branch
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+      - name: Check Node installation
+        run: node --version
