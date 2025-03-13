@@ -24,4 +24,4 @@ jobs:
         run: node --version
 
       - name: List project files
-        uses: ls -la
+        run: ls -la
