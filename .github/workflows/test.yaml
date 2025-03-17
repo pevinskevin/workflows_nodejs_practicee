@@ -14,29 +14,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Print project directory path.
-        run: pwd
-        shell: bash
-      
-      - name: Echo GithubActions work space.
-        run: echo $GITHUB_WORKSPACE
-
-
-      - name: Cache code
-        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
-        with:
-            path: /home/runner/work/workflows_nodejs_practicee/workflows_nodejs_practicee
-            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
-            restore-keys: ${{runner.os}}-node
-
       - name: Set up node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18.x'
+          cache: 'npm'
 
       - name: Check Node installation
         run: node --version
-      
+
       - name: install dependencies
         run: npm install
         shell: bash
