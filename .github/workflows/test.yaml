@@ -12,7 +12,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@da26677639ccfb4615f1acc52d1fc3dc89152490
+
+      - name: Cache code
+        uses: actions/cache@v4
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+            restore-keys: ${{runner.os}}-node
 
 
       - name: Set up node.js
@@ -31,5 +38,5 @@ jobs:
         run: ls
 
       - name: Run app.js
-        run: npm run start
+        run: timeout 10 npm run start
         shell: bash

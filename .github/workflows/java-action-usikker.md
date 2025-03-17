@@ -1,0 +1,34 @@
+# name: Maven Test
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Set up JDK
+#         uses: actions/setup-java@v3
+#         with:
+#           java-version: '21'
+#           distribution: 'temurin'
+
+#       - name: Cache Maven dependencies
+#         uses: actions/cache@v3
+#         with:
+#           path: |
+#             ~/.m2/repository
+#             target
+#           key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+#           restore-keys: |
+#             maven-${{ runner.os }}-
+
+#       - name: Run tests
+#         working-directory: ./charger-service
+#         run: ./mvnw test
