@@ -17,6 +17,10 @@ jobs:
       - name: Print project directory path.
         run: pwd
         shell: bash
+      
+      - name: Echo GithubActions work space.
+        run: echo $GITHUB_WORKSPACE
+
 
       - name: Cache code
         uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
