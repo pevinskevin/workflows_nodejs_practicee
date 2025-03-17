@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - workflow_branch
+  workflow_dispatch:
 
 jobs:
   setup:
@@ -13,12 +14,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Print project directory path.
+        run: pwd
+        shell: bash
+
       - name: Cache code
         uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
         with:
             path: ~/.npm
             key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
             restore-keys: ${{runner.os}}-node
+
 
       - name: Set up node.js
         uses: actions/setup-node@v4
