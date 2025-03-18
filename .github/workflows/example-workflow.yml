@@ -1,0 +1,28 @@
+name: example-workflow
+
+on:
+  push:
+    branches:
+      - workflow-branch
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install node
+        uses: action/setup-node@v4
+        with:
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+        shell: bash
+
+      - name: Print stuff
+        run: ls -la
+        shell: bash
